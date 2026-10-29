@@ -1,5 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import BotaoWhatsApp from "@/components/layout/BotaoWhatsApp";
 
 export default function SiteLayout({
   children,
@@ -11,6 +12,7 @@ export default function SiteLayout({
       <Header />
       <main>{children}</main>
       <Footer />
+      <BotaoWhatsApp />
     </>
   );
 }

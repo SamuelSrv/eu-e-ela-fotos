@@ -1,13 +1,30 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
-import { Camera, CreditCard, Download, GraduationCap, MapPin, Trophy } from "lucide-react";
-import { ENTRADA_PERCENTUAL, ENTREGA, REGIOES_LABEL, brl, pacotesPorTipo, type Regiao } from "@/lib/pricing";
+import {
+  Camera,
+  CreditCard,
+  Download,
+  GraduationCap,
+  MapPin,
+  MessageCircle,
+  Trophy,
+} from "lucide-react";
+import {
+  ENTRADA_PERCENTUAL,
+  ENTREGA,
+  REGIOES_LABEL,
+  brl,
+  pacotesPorTipo,
+  type Regiao,
+} from "@/lib/pricing";
 import { carregarPrecos } from "@/lib/precos";
+import { whatsappLink } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Pacotes e valores | Eu & Ela Fotos",
-  description: "Confira os pacotes de ensaio, esportivo e formatura, taxas de deslocamento e condições.",
+  description:
+    "Confira os pacotes de ensaio, esportivo e formatura, taxas de deslocamento e condições.",
 };
 
 function Linha({ nome, valor }: { nome: string; valor: string }) {
@@ -124,13 +141,22 @@ export default function PacotesPage() {
         <Conteudo />
       </Suspense>
 
-      <div className="mt-14 text-center">
+      <div className="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row">
         <Link
           href="/agendar"
           className="inline-flex rounded-full bg-accent px-8 py-3 font-medium text-background transition-colors hover:bg-accent-strong"
         >
           Agendar minha sessão
         </Link>
+        <a
+          href={whatsappLink("Olá! Tenho uma dúvida sobre os pacotes da Eu & Ela Fotos.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border border-line px-8 py-3 font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+        >
+          <MessageCircle size={18} />
+          Tirar dúvidas no WhatsApp
+        </a>
       </div>
     </div>
   );
